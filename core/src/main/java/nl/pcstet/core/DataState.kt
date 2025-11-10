@@ -3,7 +3,7 @@ package nl.pcstet.core
 // Shamelessly copied from: https://github.com/shahzadansari/RickAndMorty/blob/main/core/src/main/java/com/example/core/DataState.kt
 
 sealed class DataState<T>(open val data: T? = null, open val cause: ApiException? = null) {
-    data class Loading<T>(override val data: T? = null) : DataState<T>()
+    data class Loading<T>(val isLoading: Boolean = true) : DataState<T>()
     data class Success<T>(override val data: T) : DataState<T>(data = data)
     data class Error<T>(override val cause: ApiException) : DataState<T>(cause = cause)
 }
